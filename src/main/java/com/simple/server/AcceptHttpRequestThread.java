@@ -52,9 +52,8 @@ public class AcceptHttpRequestThread extends Thread {
 
                         BaseAction baseAction = new BaseAction();
 
-
                         baseAction.login(request, response);
-                        response.write("send");
+                        response.flush();
                         socketChannel.shutdownOutput();
                         socketChannel.close();
                     }

@@ -52,17 +52,18 @@ public class Response {
         if (!ResponseHeaderIsAppend) {
 
 
+
         }
 
-        if (output=="send") {
-            StringBuilder responseResult = new StringBuilder();
-            responseResult.append(resp);
-            responseResult.append(outPutStr.toString());
-            socketChannel.write(ByteBuffer.wrap(responseResult.toString().getBytes(Charset.defaultCharset())));
-        }else{
             outPutStr.append(output);
-        }
 
 
+    }
+
+    public void flush() throws IOException {
+        StringBuilder responseResult = new StringBuilder();
+        responseResult.append(resp);
+        responseResult.append(outPutStr.toString());
+        socketChannel.write(ByteBuffer.wrap(responseResult.toString().getBytes(Charset.defaultCharset())));
     }
 }
